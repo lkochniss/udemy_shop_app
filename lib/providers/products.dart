@@ -38,8 +38,12 @@ class Products with ChangeNotifier {
     ),
   ];
 
-  List<Product> get items {
+  List<Product> get items {    
     return [..._items];
+  }
+
+  List<Product> get favoriteItems {
+    return items.where((product) => product.isFavorite == true).toList();
   }
 
   Product findById(String id) {
@@ -48,7 +52,6 @@ class Products with ChangeNotifier {
 
   void addProduct(Product product) {
     _items.add(product);
-
     notifyListeners();
   }
 }
